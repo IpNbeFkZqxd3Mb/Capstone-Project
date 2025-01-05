@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>get QRCode</title>
+</head>
+
+<body>
+	<h3>A16</h3>
+	<img src="" id="QRCode">
+
+    <script>
+		function reqListener () {
+		  console.log(this.responseText);
+          document.getElementById("QRCode").src = "./target/target"+this.responseText+".jpg";
+		}
+
+		var oReq = new XMLHttpRequest();
+		setInterval(function(){
+			oReq.open("GET", "https://a16-web.onrender.com/");
+			oReq.send();
+		},1000)
+		oReq.addEventListener("load", reqListener);
+    </script>
+
+</body>
+
+</html>
